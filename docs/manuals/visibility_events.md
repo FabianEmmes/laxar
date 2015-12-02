@@ -12,6 +12,7 @@ Preliminary readings:
 
 > Visibility events help to improve performance by allowing widgets to determine if they are visible to the user or if they currently reside in the background.
 
+Note that while this manual is rather longish, there is a [TL;DR](#summary-tldr) at the bottom.
 
 ## Why Visibility Events?
 
@@ -51,9 +52,7 @@ If there are activities on your page causing tons of REST-requests, chances are 
 
 ## Handling Visibility Events
 
-An initial set of visibility events is published on page entry by the LaxarJS runtime, after *beginLifecycleRequest* but before *didNavigate*.
-
-Widgets may subsequently publish their own visibility events to signal changes to areas that they provide.
+An initial set of visibility events is published on page entry by the LaxarJS runtime, after *beginLifecycleRequest* but before *didNavigate*. Widgets may subsequently publish their own visibility events to signal changes to areas that they provide.
 These changes are then propagated to nested widget areas by the runtime.
 
 The following section will explain how widgets can access and utilize visibility information.
@@ -152,7 +151,7 @@ Let us have a detailed look into both tasks.
 
 ### Responding to Visibility Requests
 
-Initially the LaxarJS runtime publishes `changeAreaVisibility.{area}.{visible}` events for all widgets in top-level areas, asking them to publish a visibility status for any areas provided by them.
+Initially the LaxarJS runtime publishes `changeAreaVisibility.{area}.{visible}` events for all areas directly within top-level areas, asking them to publish a visibility status for any areas provided by them.
 
   * again, `area` is the name of the widget area of interest
 
